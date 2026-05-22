@@ -4,42 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerIQ - Smart Electrical Advice</title>
-    <!-- Tailwind CSS for styling -->
-    <script src="https://jsdelivr.net"></script>
-    <style>
-        body { background-color: #0B132B; color: #FFFFFF; font-family: sans-serif; }
-    </style>
+    <!-- Stable Tailwind CSS v3 Script -->
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#0B132B',
+                        brandBlue: '#29ABE2',
+                        brandGreen: '#25D366'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-[#0B132B] text-white font-sans selection:bg-[#29ABE2] selection:text-black">
 
     <!-- Navigation Bar -->
-    <nav style="background-color: rgba(11, 19, 43, 0.8);" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-wider" style="color: #29ABE2;">PowerIQ</div>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0B132B]/80 backdrop-blur-md border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-wider text-[#29ABE2]">PowerIQ</div>
         <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
             <a href="#home" class="hover:text-white transition">Home</a>
             <a href="#services" class="hover:text-white transition">Services</a>
-            <a href="#how-it-works" class="hover:text-white transition">How It Works</a>
-            <a href="#pricing" class="hover:text-white transition">Pricing</a>
         </div>
-        <a href="https://wa.me" target="_blank" style="background-color: #25D366;" class="text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider hover:opacity-90 transition">WhatsApp Us</a>
+        <a href="https://wa.me" target="_blank" class="bg-[#25D366] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider hover:opacity-90 transition">WhatsApp Us</a>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6 bg-cover bg-center" style="background-image: linear-gradient(rgba(11, 19, 43, 0.85), rgba(11, 19, 43, 0.95)), url('https://unsplash.com');">
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 px-6 bg-slate-950">
         <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-                <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-blue-900/50 border border-blue-700/50" style="color: #29ABE2;">• Smart Electrical Advice</span>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 leading-tight">Stop Guessing.<br><span style="color: #29ABE2;">Start Solving.</span></h1>
+                <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-blue-950 text-[#29ABE2] border border-blue-900/50">• Smart Electrical Advice</span>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 leading-tight">Stop Guessing.<br><span class="text-[#29ABE2]">Start Solving.</span></h1>
                 <p class="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">Professional electrical and solar guidance via WhatsApp. Understand your problems, quotes, and bills — before spending a cent.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me" target="_blank" style="background-color: #25D366;" class="inline-flex items-center justify-center text-white font-bold px-6 py-4 rounded-xl shadow-lg hover:opacity-95 transition text-center">Start WhatsApp Consult</a>
+                    <a href="https://wa.me" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] text-white font-bold px-6 py-4 rounded-xl shadow-lg hover:opacity-95 transition text-center">Start WhatsApp Consult</a>
                     <a href="#services" class="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-medium px-6 py-4 rounded-xl border border-gray-700 transition text-center">View Services</a>
                 </div>
             </div>
             
-            <!-- Dynamic WhatsApp Chat Simulator -->
+            <!-- WhatsApp Chat Simulator -->
             <div class="bg-slate-900 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden max-w-sm mx-auto w-full">
-                <div style="background-color: #075E54;" class="p-4 flex items-center space-x-3 border-b border-emerald-900">
+                <div class="bg-[#075E54] p-4 flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center font-bold text-white">IQ</div>
                     <div>
                         <h4 class="font-bold text-sm text-white">PowerIQ Support</h4>
@@ -68,24 +76,36 @@
             <p class="text-gray-400">Get honest, remote technical opinions from a qualified master electrician without the heavy call-out fee.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition">
-                <h3 class="text-xl font-bold mb-2">Quick Question</h3>
-                <p class="text-gray-400 text-sm mb-6">One simple electrical clarification or safety concern answered quickly.</p>
-                <div class="text-2xl font-black mb-4 text-white">R50</div>
-                <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Ask Now</a>
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Quick Question</h3>
+                    <p class="text-gray-400 text-sm mb-6">One simple electrical clarification or safety concern answered quickly.</p>
+                </div>
+                <div>
+                    <div class="text-2xl font-black mb-4 text-white">R50</div>
+                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Ask Now</a>
+                </div>
             </div>
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-blue-900 hover:border-blue-500/50 transition relative overflow-hidden">
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-blue-900 hover:border-blue-500/50 transition relative overflow-hidden flex flex-col justify-between">
                 <div class="absolute top-0 right-0 bg-blue-600 text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-bl-lg">Popular</div>
-                <h3 class="text-xl font-bold mb-2">Fault Finding Assist</h3>
-                <p class="text-gray-400 text-sm mb-6">15 minutes of detailed back-and-forth WhatsApp troubleshooting for trips or solar warnings.</p>
-                <div class="text-2xl font-black mb-4" style="color: #29ABE2;">R120</div>
-                <a href="https://wa.me" target="_blank" style="background-color: #29ABE2;" class="block text-center text-xs font-bold text-black py-3 rounded-xl uppercase tracking-wider transition">Start Assist</a>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Fault Finding Assist</h3>
+                    <p class="text-gray-400 text-sm mb-6">15 minutes of detailed back-and-forth WhatsApp troubleshooting for trips or solar warnings.</p>
+                </div>
+                <div>
+                    <div class="text-2xl font-black mb-4 text-[#29ABE2]">R120</div>
+                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold bg-[#29ABE2] text-black py-3 rounded-xl uppercase tracking-wider transition">Start Assist</a>
+                </div>
             </div>
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition">
-                <h3 class="text-xl font-bold mb-2">Quote or Bill Review</h3>
-                <p class="text-gray-400 text-sm mb-6">Send us your high contractor quotes or municipal invoices for an honest second opinion.</p>
-                <div class="text-2xl font-black mb-4 text-white">R150</div>
-                <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Review Now</a>
+            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Quote or Bill Review</h3>
+                    <p class="text-gray-400 text-sm mb-6">Send us your high contractor quotes or municipal invoices for an honest second opinion.</p>
+                </div>
+                <div>
+                    <div class="text-2xl font-black mb-4 text-white">R150</div>
+                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Review Now</a>
+                </div>
             </div>
         </div>
     </section>
