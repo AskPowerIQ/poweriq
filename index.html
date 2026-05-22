@@ -5,134 +5,312 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerIQ - Smart Electrical Advice</title>
     <style>
-        /* Standard CSS styling that browsers cannot block */
+        /* Base styles matching your premium Base44 look */
         body {
             background-color: #0B132B;
             color: #FFFFFF;
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            box-sizing: border-box;
         }
+        
+        /* Navigation Bar */
         nav {
-            background-color: #070c1c;
-            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+        }
+        .logo span {
             color: #29ABE2;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-        .container {
-            max-width: 1000px;
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #FFFFFF;
+        }
+        .btn-top-wa {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 9999px;
+            font-size: 14px;
+        }
+
+        /* Hero Container with Background Image split */
+        .hero-container {
+            position: relative;
+            min-h: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 40px 40px 40px;
+            /* Direct premium image link matching your layout theme */
+            background-image: linear-gradient(rgba(11, 19, 43, 0.65), rgba(11, 19, 43, 0.85)), url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-grid {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .nav-links { display: none; }
         }
+
+        /* Left Side Content */
         .badge {
             color: #29ABE2;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
         }
         h1 {
-            font-size: 48px;
-            margin: 20px 0;
-            font-weight: 900;
+            font-size: 54px;
+            margin: 0 0 20px 0;
+            font-weight: 800;
+            line-height: 1.1;
         }
         h1 span {
             color: #29ABE2;
         }
-        .hero p {
-            color: #94a3b8;
+        .hero-desc {
+            color: #cbd5e1;
             font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
+            margin-bottom: 35px;
+            max-width: 500px;
+            line-height: 1.5;
         }
-        .btn-wa {
+        .cta-group {
+            display: flex;
+            gap: 15px;
+        }
+        @media (max-width: 900px) {
+            .cta-group { justify-content: center; }
+            .hero-desc { margin: 0 auto 35px auto; }
+        }
+        .btn-primary {
             background-color: #25D366;
             color: white;
             padding: 15px 30px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 8px;
-            display: inline-block;
+            border-radius: 12px;
             font-size: 16px;
         }
-        .services-title {
-            text-align: center;
-            margin-top: 60px;
-            font-size: 32px;
-        }
-        .services-sub {
-            text-align: center;
-            color: #94a3b8;
-            margin-bottom: 40px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .card {
-            background-color: #111c3a;
-            border: 1px solid #1e293b;
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 500;
             border-radius: 12px;
-            padding: 30px;
-            text-align: center;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .card h3 {
-            font-size: 20px;
-            margin-top: 0;
+
+        /* Right Side Floating Custom Glass WhatsApp Simulator */
+        .wa-box {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
-        .card p {
-            color: #94a3b8;
-            font-size: 14px;
-            min-height: 60px;
+        .wa-header {
+            background: rgba(7, 94, 84, 0.7);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .price {
-            font-size: 28px;
+        .wa-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #054d44;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            margin: 20px 0;
+            font-size: 16px;
             color: #FFFFFF;
         }
-        .card .price-spec {
-            color: #29ABE2;
+        .wa-header-info h4 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
         }
+        .wa-header-info span {
+            font-size: 12px;
+            color: #a7f3d0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .wa-body {
+            padding: 20px;
+            background: rgba(2, 6, 23, 0.4);
+            display: flex;
+            flex-content: column;
+            flex-direction: column;
+            gap: 15px;
+            min-height: 200px;
+        }
+        .msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .msg-inbound {
+            background: rgba(30, 41, 59, 0.8);
+            color: #e2e8f0;
+            align-self: flex-start;
+            border-top-left-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        .wa-footer-input {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 12px 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #64748b;
+        }
+        .wa-send-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Services Pricing Section */
+        .services-sec {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sec-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .sec-title h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+        .sec-title p { color: #94a3b8; margin: 0; }
+        
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .price-card {
+            background-color: rgba(17, 28, 58, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .pop-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #29ABE2;
+            color: #0B132B;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 6px 16px;
+            border-bottom-left-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .price-card h3 { font-size: 22px; margin: 0 0 10px 0; }
+        .price-card p { color: #94a3b8; font-size: 14px; margin: 0 0 30px 0; line-height: 1.5; min-height: 45px;}
+        .cost { font-size: 36px; font-weight: 800; margin-bottom: 25px; }
+        .cost-spec { color: #29ABE2; }
+        
         .btn-card {
             display: block;
+            text-align: center;
             border: 1px solid #29ABE2;
             color: #29ABE2;
-            padding: 12px;
+            padding: 14px;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 10px;
             font-weight: bold;
             font-size: 14px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .btn-card-spec {
             background-color: #29ABE2;
             color: #0B132B;
             border: none;
         }
+
+        /* Disclaimer Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
-            color: #64748b;
-            font-size: 14px;
-            border-top: 1px solid #1e293b;
-            margin-top: 80px;
+            color: #475569;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
@@ -140,55 +318,15 @@
 
     <!-- Navigation Bar -->
     <nav>
-        <div class="logo">PowerIQ</div>
-        <a href="https://wa.me" target="_blank" class="btn-wa" style="padding: 10px 20px; font-size: 14px;">WhatsApp Us</a>
+        <div class="logo">Power<span>IQ</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+        <a href="https://wa.me" target="_blank" class="btn-top-wa">WhatsApp Us</a>
     </nav>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="badge">• Smart Electrical Advice</div>
-            <h1>Stop Guessing.<br><span>Start Solving.</span></h1>
-            <p>Professional electrical and solar guidance via WhatsApp. Understand your problems, quotes, and bills — before spending a cent.</p>
-            <a href="https://wa.me" target="_blank" class="btn-wa">Start WhatsApp Consult</a>
-        </div>
-
-        <!-- Services Section -->
-        <h2 class="services-title">Our Core Guidance Services</h2>
-        <p class="services-sub">Get honest, remote technical opinions from a qualified master electrician without the heavy call-out fee.</p>
-        
-        <div class="grid">
-            <!-- Card 1 -->
-            <div class="card">
-                <h3>Quick Question</h3>
-                <p>One simple electrical clarification or safety concern answered quickly.</p>
-                <div class="price">R50</div>
-                <a href="https://wa.me" target="_blank" class="btn-card">Ask Now</a>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="card" style="border-color: #29ABE2;">
-                <h3>Fault Finding Assist</h3>
-                <p>15 minutes of detailed back-and-forth WhatsApp troubleshooting for trips or solar warnings.</p>
-                <div class="price price-spec">R120</div>
-                <a href="https://wa.me" target="_blank" class="btn-card btn-card-spec">Start Assist</a>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="card">
-                <h3>Quote or Bill Review</h3>
-                <p>Send us your high contractor quotes or municipal invoices for an honest second opinion.</p>
-                <div class="price">R150</div>
-                <a href="https://wa.me" target="_blank" class="btn-card">Review Now</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>PowerIQ is a remote guidance platform. We do not perform physical call-outs or issue compliance certificates.</p>
-        <p>&copy; 2026 PowerIQ. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+    <!-- Main Section -->
+    <div class="hero-container" id="home">
