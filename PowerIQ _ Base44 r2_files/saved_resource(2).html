@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- saved from url=(0215)https://preview-%2Ddainty-smart-power-flow.base44.app/?hide_badge=true&base44_data_env=prod&server_url=https%3A%2F%2Fpreview-%2Ddainty-smart-power-flow.base44.app&_b44_commit=ffdb917d3d9aa6604288a163ae01579edb8e4085 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script defer="" data-preview-inject="true" data-app-id="6a0f0ca4b6f35fe89c1157a5" data-preview-type="latest_preview" data-rum-app-id="db50c921-10c3-4f12-bccb-950fa174b708" data-rum-client-token="pubfe8a4f2972b412b4556fd67e77f82cb4" data-dd-site="datadoghq.com" src="./builder-bridge(1).js.download"></script>
+    <script>
+    (function() {
+        var IGNORE = { SCRIPT: 1, STYLE: 1, LINK: 1, META: 1, NOSCRIPT: 1, TEMPLATE: 1 };
+        const fire = () => window.parent.postMessage({ type: 'IFRAME_CONTENT_READY' }, '*');
+        function check() {
+            var body = document.body;
+            if (!body) return false;
+            for (var idx = 0; idx < body.children.length; idx++) {
+                if (!IGNORE[body.children[idx].tagName]) return true;
+            }
+            return false;
+        }
+        function start() {
+            if (check()) { fire(); return; }
+            var observer = new MutationObserver(function() {
+                if (check()) { fire(); observer.disconnect(); }
+            });
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
+        if (document.body) { start(); }
+        else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
+    })();
+    </script>
+    <script>
+    (function() {
+        if (window.self === window.top) return;
+        var APP_ID = "6a0f0ca4b6f35fe89c1157a5";
+        var PREVIEW_TYPE = "latest_preview";
+        var on404 = false;
+        var booted = false;
+        function detect() { return !!document.querySelector('[data-source-location^="PageNotFound:"]'); }
+        function payload() { return { app_id: APP_ID, preview_type: PREVIEW_TYPE, url_path: window.location.pathname }; }
+        function tick() {
+            var now = detect();
+            if (now && !on404) {
+                on404 = true;
+                window.parent.postMessage({ type: 'PREVIEW_PAGE_NOT_FOUND', payload: payload() }, '*');
+            } else if (!now && (on404 || !booted)) {
+                // On first tick of a fresh document, emit a cleared signal even when
+                // not currently on a 404 — the parent may have latched is404=true from
+                // a previous document at the same URL (e.g. after an iframe reload).
+                on404 = false;
+                window.parent.postMessage({ type: 'PREVIEW_PAGE_NOT_FOUND_CLEARED', payload: payload() }, '*');
+            }
+            booted = true;
+        }
+        function start() {
+            tick();
+            new MutationObserver(tick).observe(document.body, { childList: true, subtree: true });
+        }
+        if (document.body) { start(); }
+        else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
+    })();
+    </script>
+    <script>
+    (function() {
+        if (window.self === window.top) return;
+        function postUnsupported(reason) {
+            window.parent.postMessage({
+                type: 'IFRAME_FIRST_CONTENTFUL_PAINT_UNSUPPORTED',
+                payload: { reason: reason, userAgent: navigator.userAgent }
+            }, '*');
+        }
+        if (typeof PerformanceObserver === 'undefined') {
+            postUnsupported('no_performance_observer');
+            return;
+        }
+        try {
+            var obs = new PerformanceObserver(function(list) {
+                var entries = list.getEntries();
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].name === 'first-contentful-paint') {
+                        obs.disconnect();
+                        window.parent.postMessage({ type: 'IFRAME_FIRST_CONTENTFUL_PAINT' }, '*');
+                        return;
+                    }
+                }
+            });
+            obs.observe({ type: 'paint', buffered: true });
+        } catch (e) {
+            postUnsupported('observe_threw:' + (e && e.name ? e.name : 'Error'));
+        }
+    })();
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="https://preview--dainty-smart-power-flow.base44.app/manifest.json">
+    <title>Base44 APP</title>
+    <script type="module" crossorigin="" src="./index-DveEd875.js.download"></script>
+    <link rel="stylesheet" crossorigin="" href="./index-B5Bz5ZJT.css">
+    <script type="module">
+if (window.self === window.top) {
+  let lastPath = "";
+  function getPageNameFromPath(path) {
+    const segments = path.split("/").filter(Boolean);
+    return segments[0] || null;
+  }
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastPath) return;
+    lastPath = path;
+    const pageName = getPageNameFromPath(path) || "home";
+    const appId = "6a0f0ca4b6f35fe89c1157a5";
+    if (!appId) return;
+    fetch(`/api/app-logs/${appId}/log-user-in-app/${pageName}`, {
+      method: "POST",
+    }).catch(() => {});
+  }
+  const originalPushState = history.pushState.bind(history);
+  history.pushState = function (...args) {
+    originalPushState(...args);
+    trackPageView();
+  };
+  const originalReplaceState = history.replaceState.bind(history);
+  history.replaceState = function (...args) {
+    originalReplaceState(...args);
+    trackPageView();
+  };
+  window.addEventListener("popstate", trackPageView);
+  trackPageView();
+}
+</script>
+  <script src="./datadog-rum.js.download"></script><script src="./datadog-logs.js.download"></script></head>
+  <body data-new-gr-c-s-check-loaded="14.1295.0" data-gr-ext-installed="">
+    <div id="root"><div class="min-h-screen bg-background text-foreground"><div class="fixed inset-0 overflow-hidden pointer-events-none z-0"><div class="absolute rounded-full blur-3xl bg-primary/10 w-96 h-96" style="left: 10%; top: 20%; transform: translateX(-29.5666px) translateY(19.6905px) scale(0.901238);"></div><div class="absolute rounded-full blur-3xl bg-primary/5 w-[500px] h-[500px]" style="left: 60%; top: 10%; transform: translateX(6.79678px) translateY(-5.09758px) scale(1.01699);"></div><div class="absolute rounded-full blur-3xl bg-accent/5 w-80 h-80" style="left: 80%; top: 60%; transform: translateX(-11.0437px) translateY(-2.74759px) scale(0.956869);"></div><div class="absolute rounded-full blur-3xl bg-primary/8 w-72 h-72" style="left: 30%; top: 70%; transform: translateX(-29.7769px) translateY(19.8406px) scale(0.900637);"></div></div><nav class="fixed top-0 left-0 right-0 z-50 w-full" style="transform: none;"><div class="backdrop-blur-sm bg-transparent border-b border-white/10 px-6 py-3 flex items-center justify-between"><a class="flex items-center" href="https://preview--dainty-smart-power-flow.base44.app/"><img src="./3eae916dc_poweriq-long-logopng.PNG" alt="PowerIQ" class="h-12 w-auto"></a><div class="hidden md:flex items-center gap-6"><a class="text-sm transition-colors hover:text-primary text-primary" href="https://preview--dainty-smart-power-flow.base44.app/">Home</a><a class="text-sm transition-colors hover:text-primary text-muted-foreground" href="https://preview--dainty-smart-power-flow.base44.app/services">Services</a><a class="text-sm transition-colors hover:text-primary text-muted-foreground" href="https://preview--dainty-smart-power-flow.base44.app/how-it-works">How It Works</a><a class="text-sm transition-colors hover:text-primary text-muted-foreground" href="https://preview--dainty-smart-power-flow.base44.app/pricing">Pricing</a><a class="text-sm transition-colors hover:text-primary text-muted-foreground" href="https://preview--dainty-smart-power-flow.base44.app/contact">Contact</a></div><a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium hover:brightness-110 transition box-glow-green">WhatsApp Us</a><button class="md:hidden text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-5 h-5"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main class="relative z-10"><div><section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden"><div class="absolute inset-0 z-0"><img src="./712a3928b_generated_image.png" alt="Homeowner facing electrical issue" class="w-full h-full object-cover opacity-90" style="transform: scale(1.03623);"><div class="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent"></div><div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50"></div></div><div class="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"><div style="opacity: 1; transform: none;"><div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-6"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>Smart Electrical Advice</div><h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] mb-6">Stop Guessing.<br><span class="text-primary text-glow">Start Solving.</span></h1><p class="text-muted-foreground text-lg max-w-lg leading-relaxed mb-8">Professional electrical and solar guidance via WhatsApp. Understand your problems, quotes, and bills — before spending a cent.</p><div class="flex flex-col sm:flex-row gap-4"><a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-7 py-3.5 rounded-full font-medium hover:brightness-110 transition box-glow-green text-base"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.47-.668-6.3-1.822l-.452-.28-3.26 1.093 1.093-3.26-.28-.452A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></svg>Start WhatsApp Consult</a><a href="https://preview--dainty-smart-power-flow.base44.app/services" class="inline-flex items-center justify-center gap-2 border border-border px-7 py-3.5 rounded-full font-medium hover:bg-secondary transition text-base text-muted-foreground hover:text-foreground">View Services</a></div></div><div class="hidden lg:block" style="opacity: 1; transform: none;"><div class="w-full max-w-sm mx-auto"><div class="rounded-2xl border border-border bg-card/80 backdrop-blur-sm overflow-hidden shadow-2xl"><div class="bg-accent/10 border-b border-border px-4 py-3 flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center"><span class="text-accent text-sm font-bold">⚡</span></div><div><p class="text-sm font-heading font-semibold">PowerIQ Support</p><p class="text-xs text-accent">Online now</p></div></div><div class="p-4 min-h-[280px] max-h-[320px] flex flex-col gap-3 overflow-hidden"><div class="flex justify-end" style="opacity: 0; transform: translateY(10px) scale(0.95);"><div class="max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed bg-primary/15 text-foreground rounded-br-md">Hi, my inverter keeps beeping 3 times. Should I be worried?</div></div><div class="flex justify-start" style="opacity: 0; transform: translateY(10px) scale(0.95);"><div class="max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed bg-accent/10 text-foreground rounded-bl-md">That's usually a Stage 1 overload warning. First, check if any high-draw appliances are running simultaneously.</div></div></div><div class="border-t border-border px-4 py-3 flex items-center gap-2"><div class="flex-1 bg-secondary/50 rounded-full px-4 py-2 text-xs text-muted-foreground">Type a message...</div><div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg></div></div></div></div></div></div></section><section class="relative py-24 px-6"><div class="max-w-6xl mx-auto"><div class="text-center mb-16" style="opacity: 0; transform: translateY(20px);"><span class="text-primary font-mono text-sm tracking-wider uppercase">Services</span><h2 class="font-heading font-bold text-3xl sm:text-4xl mt-3 tracking-tight">Expert Guidance, <span class="text-primary">Your Budget</span></h2></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"><div class="group relative bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300" style="opacity: 0; transform: translateY(20px);"><div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-5 h-5 text-primary"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></div><h3 class="font-heading font-semibold text-lg mb-1">Quick Question</h3><p class="font-mono text-primary font-bold text-xl mb-3">R50</p><p class="text-sm text-muted-foreground leading-relaxed">One simple electrical question answered via WhatsApp.</p></div><div class="group relative bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300" style="opacity: 0; transform: translateY(20px);"><div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-5 h-5 text-primary"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg></div><h3 class="font-heading font-semibold text-lg mb-1">Quick Fault Guide</h3><p class="font-mono text-primary font-bold text-xl mb-3">R75</p><p class="text-sm text-muted-foreground leading-relaxed">Guided assistance for breaker trips, faults, and warnings.</p></div><div class="group relative bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300" style="opacity: 0; transform: translateY(20px);"><div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search w-5 h-5 text-primary"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></div><h3 class="font-heading font-semibold text-lg mb-1">Fault Finding Assist</h3><p class="font-mono text-primary font-bold text-xl mb-3">R120</p><p class="text-sm text-muted-foreground leading-relaxed">Detailed back-and-forth guidance. ~15 minutes support.</p></div><div class="group relative bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300" style="opacity: 0; transform: translateY(20px);"><div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-5 h-5 text-primary"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></div><h3 class="font-heading font-semibold text-lg mb-1">Quote / Bill Review</h3><p class="font-mono text-primary font-bold text-xl mb-3">R150</p><p class="text-sm text-muted-foreground leading-relaxed">Understand quotes, scope of work, and electricity bills.</p></div></div><div class="text-center mt-10"><a class="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium" href="https://preview--dainty-smart-power-flow.base44.app/services">View all services →</a></div></div></section><section class="lg:hidden py-16 px-6"><div class="text-center mb-8" style="opacity: 0; transform: translateY(20px);"><span class="text-primary font-mono text-sm tracking-wider uppercase">Live Demo</span><h2 class="font-heading font-bold text-2xl mt-2">See How It Works</h2></div><div class="w-full max-w-sm mx-auto"><div class="rounded-2xl border border-border bg-card/80 backdrop-blur-sm overflow-hidden shadow-2xl"><div class="bg-accent/10 border-b border-border px-4 py-3 flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center"><span class="text-accent text-sm font-bold">⚡</span></div><div><p class="text-sm font-heading font-semibold">PowerIQ Support</p><p class="text-xs text-accent">Online now</p></div></div><div class="p-4 min-h-[280px] max-h-[320px] flex flex-col gap-3 overflow-hidden"><div class="flex justify-end" style="opacity: 0; transform: translateY(10px) scale(0.95);"><div class="max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed bg-primary/15 text-foreground rounded-br-md">Hi, my inverter keeps beeping 3 times. Should I be worried?</div></div><div class="flex justify-start" style="opacity: 0; transform: translateY(10px) scale(0.95);"><div class="max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed bg-accent/10 text-foreground rounded-bl-md">That's usually a Stage 1 overload warning. First, check if any high-draw appliances are running simultaneously.</div></div></div><div class="border-t border-border px-4 py-3 flex items-center gap-2"><div class="flex-1 bg-secondary/50 rounded-full px-4 py-2 text-xs text-muted-foreground">Type a message...</div><div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg></div></div></div></div></section><section class="relative py-24 px-6"><div class="max-w-5xl mx-auto"><div class="text-center mb-16" style="opacity: 0; transform: translateY(20px);"><span class="text-primary font-mono text-sm tracking-wider uppercase">Process</span><h2 class="font-heading font-bold text-3xl sm:text-4xl mt-3 tracking-tight">How It <span class="text-primary">Works</span></h2></div><div class="grid grid-cols-1 md:grid-cols-4 gap-8"><div class="relative text-center" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-5xl font-bold text-primary/15 block mb-2">01</span><h3 class="font-heading font-semibold text-base mb-2">Choose Your Service</h3><p class="text-sm text-muted-foreground leading-relaxed">Pick the support level that fits your situation.</p><div class="hidden md:block absolute top-8 -right-4 w-8 h-px bg-primary/20"></div></div><div class="relative text-center" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-5xl font-bold text-primary/15 block mb-2">02</span><h3 class="font-heading font-semibold text-base mb-2">Message on WhatsApp</h3><p class="text-sm text-muted-foreground leading-relaxed">Start a conversation — send photos, details, questions.</p><div class="hidden md:block absolute top-8 -right-4 w-8 h-px bg-primary/20"></div></div><div class="relative text-center" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-5xl font-bold text-primary/15 block mb-2">03</span><h3 class="font-heading font-semibold text-base mb-2">Get Expert Guidance</h3><p class="text-sm text-muted-foreground leading-relaxed">Receive clear, professional advice you can understand.</p><div class="hidden md:block absolute top-8 -right-4 w-8 h-px bg-primary/20"></div></div><div class="relative text-center" style="opacity: 0; transform: translateY(20px);"><span class="font-mono text-5xl font-bold text-primary/15 block mb-2">04</span><h3 class="font-heading font-semibold text-base mb-2">Make Smart Decisions</h3><p class="text-sm text-muted-foreground leading-relaxed">Move forward with confidence — no more guessing.</p></div></div></div></section><section class="relative py-24 px-6"><div class="max-w-3xl mx-auto text-center"><div style="opacity: 0; transform: translateY(20px);"><h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Ready to Get <span class="text-primary text-glow">Clarity?</span></h2><p class="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">Don't spend money in the dark. Get professional electrical guidance in minutes via WhatsApp.</p><a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-4 rounded-full font-semibold text-lg hover:brightness-110 transition box-glow-green"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.47-.668-6.3-1.822l-.452-.28-3.26 1.093 1.093-3.26-.28-.452A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></svg>Start WhatsApp Consult</a></div></div></section></div></main><footer class="relative border-t border-border bg-background overflow-hidden"><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[20vw] font-heading font-bold text-border/30 leading-none select-none pointer-events-none translate-y-[40%]">PowerIQ</div><div class="relative z-10 max-w-6xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-4 gap-10"><div class="md:col-span-2"><div class="mb-4"><img src="./3eae916dc_poweriq-long-logopng.PNG" alt="PowerIQ" class="h-10 w-auto"></div><p class="text-muted-foreground text-sm max-w-sm leading-relaxed">Smart Electrical Advice. We help you understand electrical and solar issues before you spend money.</p></div><div><h4 class="font-heading font-semibold text-sm mb-4 text-primary">Navigation</h4><div class="flex flex-col gap-3"><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/">Home</a><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/services">Services</a><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/pricing">Pricing</a><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/how-it-works">How It Works</a><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/contact">Contact</a></div></div><div><h4 class="font-heading font-semibold text-sm mb-4 text-primary">Legal</h4><div class="flex flex-col gap-3"><a class="text-sm text-muted-foreground hover:text-foreground transition" href="https://preview--dainty-smart-power-flow.base44.app/terms">Terms &amp; Conditions</a></div><h4 class="font-heading font-semibold text-sm mb-4 mt-6 text-primary">Safety Mandate</h4><p class="text-xs text-muted-foreground leading-relaxed uppercase tracking-wider">PowerIQ provides guidance only. Always consult a licensed electrician for physical work.</p></div></div><div class="mt-12 pt-6 border-t border-border text-center text-xs text-muted-foreground">© 2026 PowerIQ. All rights reserved.</div></div></footer></div><div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"><div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></div></div></div>
+  
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
