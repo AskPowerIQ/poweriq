@@ -4,115 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerIQ - Smart Electrical Advice</title>
-    <!-- Stable Tailwind CSS v3 Script -->
-    <script src="https://tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandNavy: '#0B132B',
-                        brandBlue: '#29ABE2',
-                        brandGreen: '#25D366'
-                    }
-                }
-            }
+    <style>
+        /* Standard CSS styling that browsers cannot block */
+        body {
+            background-color: #0B132B;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
-    </script>
+        nav {
+            background-color: #070c1c;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #29ABE2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .badge {
+            color: #29ABE2;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 48px;
+            margin: 20px 0;
+            font-weight: 900;
+        }
+        h1 span {
+            color: #29ABE2;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .services-title {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 32px;
+        }
+        .services-sub {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #111c3a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+        .card h3 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 14px;
+            min-height: 60px;
+        }
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #FFFFFF;
+        }
+        .card .price-spec {
+            color: #29ABE2;
+        }
+        .btn-card {
+            display: block;
+            border: 1px solid #29ABE2;
+            color: #29ABE2;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .btn-card-spec {
+            background-color: #29ABE2;
+            color: #0B132B;
+            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+            margin-top: 80px;
+        }
+    </style>
 </head>
-<body class="bg-[#0B132B] text-white font-sans selection:bg-[#29ABE2] selection:text-black">
+<body>
 
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0B132B]/80 backdrop-blur-md border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <div class="text-xl font-bold tracking-wider text-[#29ABE2]">PowerIQ</div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-            <a href="#home" class="hover:text-white transition">Home</a>
-            <a href="#services" class="hover:text-white transition">Services</a>
-        </div>
-        <a href="https://wa.me" target="_blank" class="bg-[#25D366] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider hover:opacity-90 transition">WhatsApp Us</a>
+    <nav>
+        <div class="logo">PowerIQ</div>
+        <a href="https://wa.me" target="_blank" class="btn-wa" style="padding: 10px 20px; font-size: 14px;">WhatsApp Us</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 px-6 bg-slate-950">
-        <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-blue-950 text-[#29ABE2] border border-blue-900/50">• Smart Electrical Advice</span>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight mt-4 mb-6 leading-tight">Stop Guessing.<br><span class="text-[#29ABE2]">Start Solving.</span></h1>
-                <p class="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">Professional electrical and solar guidance via WhatsApp. Understand your problems, quotes, and bills — before spending a cent.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://wa.me" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] text-white font-bold px-6 py-4 rounded-xl shadow-lg hover:opacity-95 transition text-center">Start WhatsApp Consult</a>
-                    <a href="#services" class="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-medium px-6 py-4 rounded-xl border border-gray-700 transition text-center">View Services</a>
-                </div>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="badge">• Smart Electrical Advice</div>
+            <h1>Stop Guessing.<br><span>Start Solving.</span></h1>
+            <p>Professional electrical and solar guidance via WhatsApp. Understand your problems, quotes, and bills — before spending a cent.</p>
+            <a href="https://wa.me" target="_blank" class="btn-wa">Start WhatsApp Consult</a>
+        </div>
+
+        <!-- Services Section -->
+        <h2 class="services-title">Our Core Guidance Services</h2>
+        <p class="services-sub">Get honest, remote technical opinions from a qualified master electrician without the heavy call-out fee.</p>
+        
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <h3>Quick Question</h3>
+                <p>One simple electrical clarification or safety concern answered quickly.</p>
+                <div class="price">R50</div>
+                <a href="https://wa.me" target="_blank" class="btn-card">Ask Now</a>
             </div>
             
-            <!-- WhatsApp Chat Simulator -->
-            <div class="bg-slate-900 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden max-w-sm mx-auto w-full">
-                <div class="bg-[#075E54] p-4 flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full bg-emerald-700 flex items-center justify-center font-bold text-white">IQ</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-white">PowerIQ Support</h4>
-                        <span class="text-xs text-emerald-300 flex items-center">● Online now</span>
-                    </div>
-                </div>
-                <div class="p-4 space-y-4 min-h-[250px] bg-slate-950 flex flex-col justify-end text-sm">
-                    <div class="bg-slate-800 text-gray-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] self-start border border-gray-700">
-                        Hi! Is your main breaker tripping or a specific plug circuit?
-                    </div>
-                    <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[85%] self-end">
-                        It happens whenever the kettle turns on.
-                    </div>
-                    <div class="bg-slate-800 text-gray-200 p-3 rounded-2xl rounded-tl-none max-w-[85%] self-start border border-gray-700">
-                        Got it. That sounds like an overload or element fault. Let's do a safe test...
-                    </div>
-                </div>
+            <!-- Card 2 -->
+            <div class="card" style="border-color: #29ABE2;">
+                <h3>Fault Finding Assist</h3>
+                <p>15 minutes of detailed back-and-forth WhatsApp troubleshooting for trips or solar warnings.</p>
+                <div class="price price-spec">R120</div>
+                <a href="https://wa.me" target="_blank" class="btn-card btn-card-spec">Start Assist</a>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card">
+                <h3>Quote or Bill Review</h3>
+                <p>Send us your high contractor quotes or municipal invoices for an honest second opinion.</p>
+                <div class="price">R150</div>
+                <a href="https://wa.me" target="_blank" class="btn-card">Review Now</a>
             </div>
         </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section id="services" class="py-24 px-6 max-w-6xl mx-auto border-t border-gray-900">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-4xl font-black mb-4">Our Core Guidance Services</h2>
-            <p class="text-gray-400">Get honest, remote technical opinions from a qualified master electrician without the heavy call-out fee.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Quick Question</h3>
-                    <p class="text-gray-400 text-sm mb-6">One simple electrical clarification or safety concern answered quickly.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black mb-4 text-white">R50</div>
-                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Ask Now</a>
-                </div>
-            </div>
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-blue-900 hover:border-blue-500/50 transition relative overflow-hidden flex flex-col justify-between">
-                <div class="absolute top-0 right-0 bg-blue-600 text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-bl-lg">Popular</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Fault Finding Assist</h3>
-                    <p class="text-gray-400 text-sm mb-6">15 minutes of detailed back-and-forth WhatsApp troubleshooting for trips or solar warnings.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black mb-4 text-[#29ABE2]">R120</div>
-                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold bg-[#29ABE2] text-black py-3 rounded-xl uppercase tracking-wider transition">Start Assist</a>
-                </div>
-            </div>
-            <div class="bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Quote or Bill Review</h3>
-                    <p class="text-gray-400 text-sm mb-6">Send us your high contractor quotes or municipal invoices for an honest second opinion.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black mb-4 text-white">R150</div>
-                    <a href="https://wa.me" target="_blank" class="block text-center text-xs font-bold border border-gray-700 hover:border-white py-3 rounded-xl uppercase tracking-wider transition">Review Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="py-12 bg-slate-950 border-t border-gray-900 text-center text-sm text-gray-500 px-6">
-        <p class="mb-2">PowerIQ is a remote guidance platform. We do not perform physical call-outs or issue compliance certificates.</p>
+    <footer>
+        <p>PowerIQ is a remote guidance platform. We do not perform physical call-outs or issue compliance certificates.</p>
         <p>&copy; 2026 PowerIQ. All Rights Reserved.</p>
     </footer>
 
